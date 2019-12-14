@@ -15,8 +15,8 @@ module.exports = async function (ctx, next) {
       ctx.body = message('', 5)
     } else {
       const res = parse(data, type)
-      // ctx.body = message(aesEncrypt(res, getKey()), 0)
-      ctx.body = message(res, 0)
+      ctx.body = message(aesEncrypt(res, getKey()), 0)
+      // ctx.body = message(res, 0)
     }
   }
 }

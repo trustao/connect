@@ -1,10 +1,10 @@
 const Koa = require('koa');
 const app = new Koa();
 const auth = require('./auth');
-const fetchData = require('./fetchData')
 const message = require('./message')
-const cors = require('@koa/cors');
+const cors = require('koa-cors');
 const router = require('./routes')
+
 
 app.use(cors())
 // logger
@@ -18,7 +18,6 @@ app.use(async (ctx, next) => {
   const rt = ctx.response.get('X-Response-Time');
   console.log(`${ctx.method} ${ctx.url} - ${rt}`);
 });
-
 
 // x-response-time
 app.use(async (ctx, next) => {

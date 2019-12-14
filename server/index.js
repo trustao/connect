@@ -4,6 +4,7 @@ const auth = require('./auth');
 const fetchData = require('./fetchData')
 const message = require('./message')
 const cors = require('@koa/cors');
+const router = require('./routes')
 
 app.use(cors())
 // logger
@@ -28,6 +29,6 @@ app.use(async (ctx, next) => {
 });
 
 app.use(auth)
-app.use(fetchData)
+app.use(router.routes());
 
 app.listen(50099);

@@ -18,5 +18,7 @@ module.exports = async function (ctx, next) {
       ctx.body = message(aesEncrypt(res, getKey()), 0)
       // ctx.body = message(res, 0)
     }
+  } else {
+    ctx.body = message({l}, 6)
   }
 }

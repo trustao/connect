@@ -1,11 +1,19 @@
 const router = require('koa-router')();
+const message = require('./message')
+const fetchData = require('./fetchData')
 
-router.post('/users',
+router.get('/l',
   (ctx) => {
-    console.log(ctx.request.body);
-    // => POST body
-    ctx.body = JSON.stringify(ctx.request.body);
+    ctx.body = message('ok', 0);
   }
 );
 
-app.use(router.routes());
+router.get('/g', fetchData);
+
+router.get('*',
+  (ctx) => {
+    ctx.body = message('', 1)
+  }
+);
+
+module.exports = router

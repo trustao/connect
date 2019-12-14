@@ -3,3 +3,4 @@ node_modules/
 client
 list.json
 config.json
+app/

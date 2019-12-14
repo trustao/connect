@@ -1,8 +1,10 @@
 const info = {
   '0': 'SUCCESS',
+  '1': 'Not found',
   '2': 'Service Error',
   '4': 'Not Allow',
   '5': 'Fetch Error',
+  '6': 'Params Error',
   '7': 'ERROR'
 }
 

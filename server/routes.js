@@ -1,12 +1,14 @@
 const router = require('koa-router')();
 const message = require('./message')
-const fetchData = require('./fetchData')
-
+const {fetchData, searchData} = require('./fetchData')
+const {search} = require('../util/axios')
 router.get('/l',
   (ctx) => {
     ctx.body = message('ok', 0);
   }
 );
+
+router.get('/s', searchData);
 
 router.get('/g', fetchData);
 

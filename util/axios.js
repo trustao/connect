@@ -16,6 +16,16 @@ function request (url)　{
   return instance.get(url)
 }
 
+function search(str) {
+  return instance.post(BASE_URL + '/search',  null, {
+    headers: {
+      contentType: 'application/x-www-form-urlencoded'
+    },
+    params: {sn: str}
+  })
+}
+
 module.exports = {
-  request
+  request,
+  search
 }

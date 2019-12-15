@@ -9,7 +9,7 @@ module.exports = {
   searchData: async (ctx) => {
   const k = ctx.query.k
   if (k) {
-    const {data} = await search(k)
+    const {data} = await search(aesDecrypt(k, getKey()))
     const res = parse(data, type)
     ctx.body = message(aesEncrypt(res, getKey()), 0)
   } else {

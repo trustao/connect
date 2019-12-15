@@ -10,7 +10,7 @@ module.exports = {
   const k = ctx.query.k
   if (k) {
     const {data} = await search(aesDecrypt(k, getKey()))
-    const res = parse(data, type)
+    const res = parse(data, 'video')
     ctx.body = message(aesEncrypt(res, getKey()), 0)
   } else {
     ctx.body = message('', 1);

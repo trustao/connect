@@ -54,7 +54,7 @@ class Parse {
   getOthers () {
     const $ = this.$;
     const res = []
-    $('.panel-heading a:first-child').map((i, e) => {
+    $('.panel-heading>a:first-child').map((i, e) => {
       res.push({title:  $(e).text(), url: $(e).attr('href')})
     })
     return res

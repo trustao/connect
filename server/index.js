@@ -4,11 +4,12 @@ const auth = require('./auth');
 const message = require('./message')
 const cors = require('koa-cors');
 const router = require('./routes')
-
+const {getClientIP} = require('../util/index')
 
 app.use(cors())
 // logger
 app.use(async (ctx, next) => {
+  console.log(`[REQ] => ${ctx.method} ${ctx.url} Form: [${getClientIP(ctx.req)}]`)
   try {
     await next();
   } catch (e) {
@@ -16,7 +17,7 @@ app.use(async (ctx, next) => {
     ctx.body = message(e.toString(), 2)
   }
   const rt = ctx.response.get('X-Response-Time');
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+  console.log(`[RES] <= ${ctx.url} - ${rt}`);
 });
 
 // x-response-time

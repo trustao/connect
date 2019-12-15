@@ -1,6 +1,6 @@
 const message = require('./message')
 const getKey = require('../util/key')
-const { request } = require('../util/axios')
+const { request,search } = require('../util/axios')
 const {aesDecrypt, aesEncrypt} = require('../util/lock')
 const {parse} = require('./parse')
 const {BASE_URL}　=　require('../config')

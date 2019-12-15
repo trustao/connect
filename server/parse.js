@@ -22,7 +22,8 @@ class Parse {
           title: this.getPageTitle(),
           info: this.getDescription(),
           links: this.getList(),
-          magnetic: this.getMagneticList()
+          magnetic: this.getMagneticList(),
+          others: this.getOthers()
         }
       case "list":
       default:
@@ -30,6 +31,7 @@ class Parse {
           type: this.type,
           title: this.getPageTitle(),
           links: this.getList(),
+          others: this.getOthers()
         }
     }
   }
@@ -47,6 +49,15 @@ class Parse {
       }
     })
     return  res
+  }
+
+  getOthers () {
+    const $ = this.$;
+    const res = []
+    $('.panel-heading a:first-child').map((i, e) => {
+      res.push({title:  $(e).text(), url: $(e).attr('href')})
+    })
+    return res
   }
 
   getDescription() {

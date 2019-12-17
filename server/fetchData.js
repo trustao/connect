@@ -7,15 +7,15 @@ const {BASE_URL}　=　require('../config')
 
 module.exports = {
   searchData: async (ctx) => {
-  const k = ctx.query.k
-  if (k) {
-    const {data} = await search(aesDecrypt(k, getKey()))
-    const res = parse(data, 'video')
-    ctx.body = message(aesEncrypt(res, getKey()), 0)
-  } else {
-    ctx.body = message('', 1);
-  }
-},
+    const k = ctx.query.k
+    if (k) {
+      const {data} = await search(aesDecrypt(k, getKey()))
+      const res = parse(data, 'video')
+      ctx.body = message(aesEncrypt(res, getKey()), 0)
+    } else {
+      ctx.body = message('', 1);
+    }
+  },
   fetchData: async function (ctx, next) {
     const { l, type } = ctx.query
     if (l) {

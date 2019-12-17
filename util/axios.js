@@ -23,7 +23,16 @@ function search(str) {
   })
 }
 
+function customRequest (protocol, host, path) {
+  return instance.get(protocol + host + path, {
+    headers: {
+      Host: host
+    }
+  })
+}
+
 module.exports = {
   request,
-  search
+  search,
+  customRequest
 }

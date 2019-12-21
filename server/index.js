@@ -5,8 +5,15 @@ const message = require('./message')
 const cors = require('koa-cors');
 const router = require('./routes')
 const {getClientIP, dateFormat} = require('../util/index')
-
+const compress = require('koa-compress')
 app.use(cors())
+app.use(compress({
+  filter: function (content_type) {
+    return /text/i.test(content_type)
+  },
+  threshold: 2048,
+  flush: require('zlib').Z_SYNC_FLUSH
+}))
 // logger
 app.use(async (ctx, next) => {
   console.log(`[REQ] => ${ctx.method} ${ctx.url} Form: [${getClientIP(ctx.req)}] Time: ${dateFormat(new Date())}`)
